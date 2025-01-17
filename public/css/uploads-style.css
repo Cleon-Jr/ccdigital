@@ -1,0 +1,88 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--body-background-color);
+    color: var(--text-color1);
+}
+
+/*
+.navbar{
+    padding: 0px;
+}
+header{
+    color: #fff;
+    margin-left: 10px;
+} */
+#pageTitle{
+    margin-left: 10px;
+    padding: 0px;
+}
+
+.container-fluid{
+    padding: 5px;
+}
+.card{
+    margin: 5px;
+    padding: 5px;
+}
+
+.text-success{
+    position: absolute;
+    visibility: hidden;
+    margin-left: 40px;
+    margin-top: 5px;
+}
+.view{
+    /* font-size: 14px; */
+    visibility: visible;
+}
+.loadActive{
+    position: absolute;
+    visibility: visible;
+    animation: is-rotating 1s infinite;
+    border: 3px solid #e5e5e5;
+    border-radius: 50%;
+    border-top-color: #28a745;
+    height: 30px;
+    width: 30px;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @keyframes is-rotating {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+
+#cardUploads{
+    border-top: 3px solid #28a745;
+}
+#cardInfo{
+    border-top: 3px solid #ffc416;
+}
+#cardInfo #dt{
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    color: var(--btn-login-color);
+    font-size: 14px;
+}
+#cardInfo .card-body{
+    line-height: 20px;
+}
+
+
+
+@media (max-width: 500px){
+    #pageTitle{
+        margin: 0px;
+        text-align: center;
+        padding: 0px;
+    }
+
+}

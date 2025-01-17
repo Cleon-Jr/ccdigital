@@ -1,0 +1,123 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--body-background-color);
+    color: var(--text-color1);
+}
+
+.navbar{
+    background-color: var(--card-background-color);
+}
+.navbar .navbar-brand{
+    width: 270px;
+    display: flex;
+    justify-content: space-between;
+}
+.navbar .navbar-brand .img-fluid{
+    width: 80px;
+}
+.navbar .navbar-brand .userLogged{
+    position: relative;
+    top: 3px;
+}
+.navbar .navbar-toggler{
+    color: var(--text-color2);
+    border: 1px solid var(--text-color1);
+}
+.navbar .navbar-nav{
+    text-align: center;
+}
+.navbar .navbar-nav .nav-item{
+    width: 150px;
+}
+.navbar .navbar-nav .nav-item .nav-link{
+    color: #fff;
+    transition: ease-in-out .3s;
+}
+.navbar .navbar-nav .dropdown .dropdown-menu{
+    background-color: #2aa9bd;
+    padding: 0px;
+}
+.navbar .navbar-nav .dropdown .dropdown-menu .dropdown-item{
+    color: #fff;
+    border-radius: 3px;
+}
+.navbar .navbar-nav .dropdown .dropdown-menu .dropdown-item:hover{
+    background-color: var(--card-background-color);
+    color: #fff;
+}
+
+.barItem{
+    position: relative;
+    width: 100%;
+    height: 2px;
+    top: 0px;
+    border-radius: 2px;
+    background-color: #fff;
+    opacity: 0;
+    transition: ease-in-out .3s;
+}
+
+.navbar .navbar-nav .nav-item:hover .barItem{
+    position: relative;
+    opacity: 1;
+    top: 40px;
+    background-color: var(--btn-login-color);
+}
+.navbar .navbar-nav .nav-item .nav-link:hover{
+    color: var(--btn-login-color);
+}
+
+
+#myFrame{
+    position: absolute;
+    top: 63px;
+    min-height: 500px;
+}
+
+footer{
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    height: 20px;
+    text-align: end;
+}
+footer h6{
+    margin-right: 10px;
+    font-size: 10px;
+    font-weight: bold;
+    color: #2aa9bd;
+}
+
+
+
+
+
+
+/* Mobile */
+@media (max-width: 500px){
+    .navbar .navbar-brand{
+        width: 60px;
+    }
+    .navbar .navbar-nav .nav-item{
+        width: 100%;
+        border-bottom: 1px solid var(--text-color1);
+    }
+
+
+    #myFrame{
+        position: absolute;
+        top: 56px;
+        min-height: 500px;
+    }
+
+
+    footer{
+        text-align: center;
+    }
+}
