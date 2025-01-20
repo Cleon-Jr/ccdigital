@@ -53,7 +53,7 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <button type="submit" class="btn btn-success btn-block text-white">Enviar Arquivos</button>
+                                            <button type="submit" class="btn btn-success btn-block text-white">Enviar Arquivo</button>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <div id="cloader"></div>
@@ -86,16 +86,26 @@
                      </script>
                  @endif
                 <div class="card-body">
-                    <form method="post" action="{{'/admin/saveinst'}}">
+                    <form method="post" action="{{'/admin/saveinst'}}" enctype="multipart/form-data">
                         @csrf
+                        <div class="form-row">
+                            <div class="form-group col-md text-right">
+                                <input type="file" name="logo" id="file" class="inputfile">
+                                <label for="file" title="Selecione uma image do Brasão ou Logomarca da Instituição!">
+                                    <i class="bi bi-upload"></i>
+                                </label>
+                            </div>
+                            <div class="form-group col-md">
+                                <img class="img-thumbnail" id="imgThumbnail" src=" {{asset('img/brand/'.$logo)}} ">
+                            </div>
+                        </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <input type="hidden" name="id" value="{{$id}}">
                                 <label>CNPJ</label>
                                 <input type="text" name="cnpj" class="form-control" value="{{$cnpj}}" required>
                             </div>
-                        </div>
-                        <!-- Campo para logomarca -->
+                        </div>                        
                         <div class="form-row">
                             <div class="form-group col-md-10">
                                 <label>Nome Instituição</label>
@@ -187,6 +197,19 @@
             document.getElementById('txt').classList.toggle('view');
             document.getElementById('cloader').classList.toggle('loadActive');
         }
+    </script>
+
+    <script type="text/javascript">
+        $(function(){
+            $('#file').change(function(){
+                const file = $(this)[0].files[0];
+                const fileReader = new FileReader();
+                fileReader.onloadend = function(){
+                $('#imgThumbnail').attr('src',fileReader.result);
+                };
+            fileReader.readAsDataURL(file);
+            });
+        });
     </script>
 
 @endsection

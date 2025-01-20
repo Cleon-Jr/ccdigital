@@ -55,6 +55,7 @@ class adminDashController extends Controller
                 $earning = $total[0]->earnings;
                 $competence = $month.'/'.$year;
                 $register = $countEmployee.'/'.$countRegister;
+                $earning = number_format($earning, 2, ',', '.');
 
             }
             else{
@@ -71,7 +72,7 @@ class adminDashController extends Controller
                 'email' => strtolower($email),
                 'address' => $address,
                 'location' => $location,
-                'earning' => number_format($earning, 2, ',', '.'),
+                'earning' => $earning,
                 'competence' => $competence,
                 'register' => $register,
                 'lastDate' => $dateSend

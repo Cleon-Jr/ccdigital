@@ -26,6 +26,7 @@ class adminInstitutionRequest extends FormRequest
             'description' => 'required',
             'address' => 'required',
             'district' => 'required',
+            'logo' => 'image|mimes:jpeg,png,jpg|max:2048'
         ];
     }
 
@@ -39,6 +40,9 @@ class adminInstitutionRequest extends FormRequest
             'description.required' => 'Informe o nome da instituição!',
             'address.required' => 'Informe o endereço da instituição!',
             'district.required' => 'O bairro é obrigatório!',
+            'logo.image' => 'Arquivo de imagem inválido!',
+            'logo.mimes' => 'Extensão de arquivo inválida!',
+            'logo.max' => 'O tamanho do arquivo não pode exceder :max!'
         ];
     }
 }

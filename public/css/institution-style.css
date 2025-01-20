@@ -11,7 +11,7 @@ body{
 
 #pageTitle{
     margin-left: 10px;
-    padding: 0px;
+    padding: 5px;
 }
 
 .container{
@@ -84,20 +84,57 @@ body{
     }
   }
 
+  /*upload logomarca*/
+.inputfile{
+    position: absolute;
+    width: 0.5px;
+    height: 0.5px;    
+/*    opacity: 0px;
+    overflow: hidden;*/    
+    z-index: -1;    
+}
+.inputfile + label{    
+    color: #2aa9bd;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#imgThumbnail{
+    position: absolute;
+    display: block;   
+    max-width: 30%;
+    max-height: 200px;
+    top: -30px;
+    right: 80px;    
+}
+
 
 
 
 
 
 @media (max-width: 500px){
+    #imgThumbnail{
+        position: absolute;
+        display: flexbox;   
+        width: 30%;
+        top: -100px;
+        margin-left: 30%;
+        margin-right: 30%;
+    }
+    .card .card-body #file{
+        position: absolute;
+        border: 1px solid;
+    }
+
     #pageTitle{
         margin: 0px;
         text-align: center;
-        padding: 0px;
+        padding: 10px;
     }
     .card .card-body .btn{
         align-self: center;
-    }
+    }    
     #footer .btn{
         width: 48%;
     }

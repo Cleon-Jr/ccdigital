@@ -30,6 +30,8 @@ Route::middleware(['sessionUser'])->group(function(){
 // Adicionar usuário
 Route::post('/admin/adduser', [adminUserController::class, 'addUser']);
 
+Route::get('/admin/userlist', [adminUserController::class, 'viewUserList']);
+
 //exibe a tela principal (main)
 Route::get('/admin/main', [mainController::class, 'viewMain']);
 // exibe a tela de dashboard
@@ -47,7 +49,15 @@ Route::post('/admin/saveinst', [institutionController::class, 'saveInstitution']
 // realiza a inserção das informações da instituição gestora via arquivo json
 Route::post('/admin/addinstjson', [institutionController::class, 'addInstitutionJson']);
 
+
 //realiza o logout do usuário
 Route::get('/admin/logout', [adminLogoutController::class, 'adminLogout']);
 
+});
+
+
+
+//Public Routes
+Route::get('/', function(){
+    return view('public.login');
 });

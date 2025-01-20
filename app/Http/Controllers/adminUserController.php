@@ -48,4 +48,12 @@ class adminUserController extends Controller
             return back()->with('error','Este E-mail já existe!')->withInput();
         }
     }
+
+
+
+    public function viewUserList(){
+        return view('admin.griduser');
+    }
+
+
 }

@@ -41,7 +41,7 @@
             </form>
         </div>
 
-        <p class="text-center">Produzido por Infortread Sistemas -  2025</p>
+        <p class="text-center">From Infortread Sistemas -  2025</p>
     </section>
 
     @if (Session::has('login-success'))

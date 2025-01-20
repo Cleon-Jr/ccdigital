@@ -26,26 +26,26 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <div class="barItem"></div>
-                    <a href="{{'/admin/dash'}}" target="myframe" class="nav-link active">Home</a>
+                    <a href="{{'/admin/dash'}}" target="myframe" class="nav-link active" onclick="$('#myCollapse').collapse('hide')">Home</a>
                 </li>
                 <li class="nav-item">
                     <div class="barItem"></div>
-                    <a href="{{'/admin/uploads'}}" target="myframe" class="nav-link">Envio de Folha</a>
+                    <a href="{{'/admin/uploads'}}" target="myframe" class="nav-link" onclick="$('#myCollapse').collapse('hide')">Envio de Folha</a>
                 </li>
                 <li class="nav-item">
                     <div class="barItem"></div>
-                    <a href="#" class="nav-link">Usuários</a>
+                    <a href="{{'/admin/userlist'}}" target="myframe" class="nav-link" onclick="$('#myCollapse').collapse('hide')">Usuários</a>
                 </li>
                 <li class="nav-item dropdown">
                     <div class="barItem"></div>
                     <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Configurações</a>
                     <div class="dropdown-menu">
-                        <a href="{{'/admin/institution'}}" target="myframe" class="dropdown-item">Instituição</a>
+                        <a href="{{'/admin/institution'}}" target="myframe" class="dropdown-item" onclick="$('#myCollapse').collapse('hide')">Instituição</a>
                     </div>
                 </li>
                 <li class="nav-item">
                     <div class="barItem"></div>
-                    <a href="{{'/admin/logout/'}}" class="nav-link">Sair</a>
+                    <a href="{{'/admin/logout/'}}" class="nav-link" onclick="$('#myCollapse').collapse('hide')">Sair</a>
                 </li>
             </ul>
         </div>
