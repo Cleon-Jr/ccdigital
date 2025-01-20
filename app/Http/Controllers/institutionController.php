@@ -29,7 +29,6 @@ class institutionController extends Controller
                 $tel2 = $item->inst_tel2;
                 $email = $item->inst_email;
                 $logo = $item->inst_logo;
-
             }
 
         return view('admin.institution', [
@@ -60,7 +59,7 @@ class institutionController extends Controller
                 // dd($request);
                 if($request->hasFile('logo')){
                     $filename = time().'.'.$request->logo->extension();
-                    $request->logo->move(public_path('images'), $filename);                    
+                    $request->logo->move(public_path('images'), $filename);
                 }
                 $inst = DB::insert('insert into tbinstitution values(null,?,?,?,?,?,?,?,?,?,?,?,?,?)', [
                     strtoupper($request->cnpj),
@@ -96,7 +95,7 @@ class institutionController extends Controller
                 // dd($request);
                 if($request->hasFile('logo')){
                     $filename = time().'.'.$request->logo->extension();
-                    $request->logo->move(public_path('img/brand'), $filename);                    
+                    $request->logo->move(public_path('img/brand'), $filename);
                 }
                 $inst = DB::update('update tbinstitution set inst_cnpj = ?, inst_description = ?, inst_address = ?, inst_number = ?, inst_district = ?, inst_cep = ?, inst_uf = ?, inst_city = ?, inst_tel1 = ?, inst_tel2 = ?, inst_email = ?, inst_logo =?, inst_date = ? where inst_id = ?', [
                     strtoupper($request->cnpj),
@@ -193,7 +192,7 @@ class institutionController extends Controller
         }
     }
 
-    
+
 
     public function addBrand(Request $request){     // Adiciona a logomarca
         dd($request);

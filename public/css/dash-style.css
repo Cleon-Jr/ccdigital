@@ -9,13 +9,7 @@ body{
     color: var(--text-color1);
 }
 
-/* .navbar{
-    padding: 0px;
-}
-header{
-    color: #fff;
-    margin-left: 10px;
-} */
+
 #pageTitle{
     margin-left: 10px;
     padding: 5px;

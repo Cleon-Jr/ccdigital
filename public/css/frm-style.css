@@ -1,0 +1,55 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--body-background-color);
+    color: var(--text-color1);
+}
+
+.container{
+    padding: 5px;
+}
+
+.card{
+    margin: 5px;
+    padding: 10px;
+    border-top: 3px solid #2aa9bd;
+}
+
+.card .card-body .form-control{
+    border-radius: 0px;
+    border: none;
+    border-bottom: 1px solid #666;
+    height: 30px;
+    text-transform: uppercase;
+    box-shadow: none;
+}
+
+.card .card-body #email{
+    text-transform: none;
+}
+
+.card .card-body .btn{
+    width: 200px;
+}
+
+
+
+
+@media (max-width: 500px){
+    .card .card-body .btn{
+        align-self: center;
+    }
+    #footer .btn{
+        width: 48%;
+    }
+    #footer .form-group{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+

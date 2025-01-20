@@ -27,7 +27,7 @@
     @endif
 
     <section class="container">
-        <h4 id="pageTitle">Gestão do Sistema</i> </h4>
+
             <div class="card" id="cardInstitution">
                 <h5 class="text-center">Cadastro da Instituição</h5>
                 <hr class="mx-auto" width="80%">
@@ -103,9 +103,9 @@
                             <div class="form-group col-md-4">
                                 <input type="hidden" name="id" value="{{$id}}">
                                 <label>CNPJ</label>
-                                <input type="text" name="cnpj" class="form-control" value="{{$cnpj}}" required>
+                                <input type="text" name="cnpj" id="cnpj" class="form-control" value="{{$cnpj}}" oninput="formatCNPJ(this)" maxlength="18" required>
                             </div>
-                        </div>                        
+                        </div>
                         <div class="form-row">
                             <div class="form-group col-md-10">
                                 <label>Nome Instituição</label>
@@ -149,22 +149,22 @@
                         <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label>Telefone 1</label>
-                                <input type="text" name="tel1" class="form-control" value="{{$tel1}}">
+                                <input type="text" name="tel1" oninput="formatPhoneNumber(this)" class="form-control" value="{{$tel1}}">
                             </div>
                             <div class="form-group col-md-3">
                                 <label>Telefone 2</label>
-                                <input type="text" name="tel2" class="form-control" value="{{$tel2}}">
+                                <input type="text" name="tel2" oninput="formatPhoneNumber(this)" class="form-control" value="{{$tel2}}">
                             </div>
                             <div class="form-group col-md-6">
                                 <label>E-mail</label>
-                                <input type="email" name="email" id="email" class="form-control" value="{{$email}}">
+                                <input type="email" name="email" id="email" class="form-control" value="{{Str::lower($email)}}">
                             </div>
                         </div>
                         <hr>
                         <div class="form-row" id="footer">
                             <div class="form-group col-md-12">
                                 <button type="submit" class="btn btn-success">Salvar</button>
-                                <a href="#" class="btn btn-light">Cancelar</a>
+                                <a href="{{'/admin/dash'}}" class="btn btn-light">Cancelar</a>
                             </div>
                         </div>
                     </form>
@@ -211,5 +211,59 @@
             });
         });
     </script>
+
+    <!-- Mask Tel-->
+    <script>
+        function formatPhoneNumber(input) {
+            let value = input.value.replace(/\D/g, '');
+            // Remove todos os caracteres não numéricos
+            let formattedValue = '';
+                if (value.length > 0) {
+                    formattedValue = '(' + value.substring(0, 2) + ') ';
+                }
+                if (value.length > 2 && value.length <= 6) {
+                    formattedValue += value.substring(2, 6);
+                }
+                if (value.length >= 7 && value.length <= 10) {
+                    formattedValue += value.substring(2, 6) + '-' + value.substring(6, 10);
+                }
+                if (value.length >= 11) {
+                    formattedValue += value.substring(2, 7) + '-' + value.substring(7, 11);
+                }
+                input.value = formattedValue;
+        }
+    </script>
+
+    <script>
+        function formatCNPJ(input) {
+            let value = input.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+            let formattedValue = '';
+                if (value.length > 0) {
+                    formattedValue = value.substring(0, 2);
+                }
+                if (value.length >= 3) {
+                    formattedValue += '.' + value.substring(2, 5);
+                }
+                if (value.length >= 6) {
+                    formattedValue += '.' + value.substring(5, 8);
+                }
+                if (value.length >= 9) {
+                    formattedValue += '/' + value.substring(8, 12);
+                }
+                if (value.length >= 13) {
+                    formattedValue += '-' + value.substring(12, 14);
+                }
+                input.value = formattedValue;
+            }
+
+        function applyMask(){
+            const cnpj = document.getElementById('cnpj');
+            formatCNPJ(cnpj);
+        }
+
+        window.onload = applyMask;
+    </script>
+
+
 
 @endsection

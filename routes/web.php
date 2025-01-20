@@ -29,8 +29,10 @@ Route::middleware(['sessionUser'])->group(function(){
 
 // Adicionar usuário
 Route::post('/admin/adduser', [adminUserController::class, 'addUser']);
-
+// Exibe a grid de usuários admins cadastrados
 Route::get('/admin/userlist', [adminUserController::class, 'viewUserList']);
+// Exibe o form de cadastro de administradores
+Route::get('/admin/administrator', [adminUserController::class, 'viewFormAdmin']);
 
 //exibe a tela principal (main)
 Route::get('/admin/main', [mainController::class, 'viewMain']);

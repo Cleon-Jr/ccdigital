@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\adminUserRequest;
+use App\Models\adminModel;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -52,7 +53,15 @@ class adminUserController extends Controller
 
 
     public function viewUserList(){
-        return view('admin.griduser');
+        $adminUsers = adminModel::paginate(12);
+
+        return view('admin.griduser', ['adminUser' => $adminUsers]);
+    }
+
+
+
+    public function viewFormAdmin(){
+        return view('admin.frmadmin');
     }
 
 
