@@ -11,12 +11,23 @@
 
 <div class="container-fluid">
     <div class="top-control">
-        <a href="{{'/admin/administrator'}}" class="btn btn-light" title="Adicionar novo administrador">Adicionar</a>
-        <form class="form form-inline col-md">
-            <input type="text" name="search" value="" class="form-control col-md-4" placeholder="Procure por CPF ou Nome">
+        <a href="{{'/admin/administrator/0'}}" class="btn btn-light" title="Adicionar novo administrador">Adicionar</a>
+        <form method="get" action="/admin/search" class="form form-inline col-md">
+            {{-- @csrf --}}
+            <input type="text" name="search" class="form-control col-md-4" placeholder="Procure por CPF ou Nome">
             <button type="submit" class="btn btn-search" title="Procurar registro"><i class="bi bi-search"></i></button>
         </form>
     </div>
+
+    @if (Session::has('attention'))
+        <script>
+            swal({
+                title: "Contracheque Digital | ATENÇÃO",
+                text: "{{Session::get('attention')}}",
+                icon: "warning",
+            });
+        </script>
+    @endif
 
     <table class="table table-hover table-bordered table-light">
         <thead>
@@ -37,7 +48,7 @@
                     <td>{{$item->adm_name}}</td>
                     <td>{{$item->adm_email}}</td>
                     <td>{{$item->adm_date}}</td>
-                    <td class="text-center"><i class="bi bi-view-stacked text-success" title="Visualizar registro"></i></td>
+                    <td class="text-center"><a href="/admin/administrator/{{$item->adm_id}}"><i class="bi bi-view-stacked text-success" title="Visualizar registro"></i></a></td>
                     <td class="text-center"><i class="bi bi-pencil-square text-warning" title="Editar registro"></i></td>
                     <td class="text-center"><i class="bi bi-trash-fill text-danger" title="Excluir registro"></i></td>
                 </tr>

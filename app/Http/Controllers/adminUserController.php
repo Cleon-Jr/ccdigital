@@ -19,32 +19,59 @@ class adminUserController extends Controller
         ]);
 
         $request->validated();
-        dd($request);
 
         if(!$emailConfirm){
-            try {
-                $pass = Hash::make($request->pass, ['rounds' => 10]);
+            if($request->id == null){
+                dd($request->id);
+                try {
+                    $pass = Hash::make($request->pass, ['rounds' => 10]);
 
-                $admin = DB::insert('insert into tbadmins values(null,?,?,?,?,?,?,?)', [
-                    preg_replace('/[^a-zA-Z0-9]/','',$request->cpf),
-                    $request->fullname,
-                    $request->email,
-                    $pass,
-                    null,
-                    0,
-                    date('Y-m-d H:i:s')
-                ]);
+                    $admin = DB::insert('insert into tbadmins values(null,?,?,?,?,?,?,?)', [
+                        preg_replace('/[^a-zA-Z0-9]/','',$request->cpf),
+                        $request->fullname,
+                        $request->email,
+                        $pass,
+                        null,
+                        0,
+                        date('Y-m-d H:i:s')
+                    ]);
 
-                return back()->with('success', 'Administrador adicionado com sucesso!');
+                    return back()->with('success', 'Administrador adicionado com sucesso!');
 
-            } catch (Exception $ex) {
-                // Log
-                Log::error('OCORREU UMA EXCEÇÃO AO EXECUTAR O [CADASTRO DE ADMIN]! '.$ex->getMessage(),[
-                    'exception' => $ex
-                ]);
+                } catch (Exception $ex) {
+                    // Log
+                    Log::error('OCORREU UMA EXCEÇÃO AO EXECUTAR O [CADASTRO DE ADMIN]! '.$ex->getMessage(),[
+                        'exception' => $ex
+                    ]);
 
-                return redirect('/admin')->with('error', 'Não foi possível adicionar o administrador!');
+                    return back()->with('error', 'Não foi possível adicionar o administrador!');
+                }
             }
+            else{
+                try {
+                    $pass = Hash::make($request->pass, ['rounds' => 10]);
+
+                    $admin = DB::update('update tbadmins set adm_cpf = ?, adm_name = ?, adm_email = ?, adm_pass = ?, adm_date = ? where adm_id = ?', [
+                        preg_replace('/[^a-zA-Z0-9]/','',$request->cpf),
+                        $request->fullname,
+                        $request->email,
+                        $pass,
+                        date('Y-m-d H:i:s'),
+                        $request->id
+                    ]);
+
+                    return back()->with('success', 'Alterações salvas com sucesso!');
+
+                } catch (Exception $ex) {
+                    // Log
+                    Log::error('OCORREU UMA EXCEÇÃO AO EXECUTAR O [EDITAR DE ADMIN]! '.$ex->getMessage(),[
+                        'exception' => $ex
+                    ]);
+
+                    return back()->with('error', 'Não foi possível salvar as alterações!');
+                }
+            }
+
         }
         else{
             return back()->with('error','Este E-mail já existe!')->withInput();
@@ -52,38 +79,6 @@ class adminUserController extends Controller
     }
 
 
-
-    public function addAdmin(adminUserRequest $request){
-        $emailConfirm = DB::select('select * from tbadmins where adm_email = ?', [
-            $request->email
-        ]);
-
-        $request->validated();
-
-        if(!$emailConfirm){
-            try {
-                $pass = Hash::make($request->pass, ['rounds' => 10]);
-
-                $admin = DB::insert('insert into tbadmins values(null,?,?,?,?,?,?,?)', [
-                    $request->cpf,
-                    $request->fullname,
-                    $request->email,
-                    $pass,
-                    null,
-                    0,
-                    date('Y-m-d H:i:s')
-                ]);
-
-                return back()->with('success', 'Administrador adicionado com sucesso!');
-
-            } catch (Exception $ex) {
-                Log::error('OCORREU UMA EXCEÇÃO AO EXECUTAR A INSERÇÃO DE UM ADMIN! '.$ex->getMessage());
-
-                return back()->with('error', 'Não foi possível adicionar o administrador!')->withInput();
-            }
-        }
-
-    }
 
 
     public function viewUserList(){
@@ -98,9 +93,50 @@ class adminUserController extends Controller
 
 
 
-    public function viewFormAdmin(){
-        return view('admin.frmadmin');
+    public function viewFormAdmin($id){
+        $adminUser = DB::select('select * from tbadmins where adm_id = ?', [
+            $id
+        ]);
+        if($adminUser){
+            foreach($adminUser as $item){
+                $id = $item->adm_id;
+                $cpf = $item->adm_cpf;
+                $name = $item->adm_name;
+                $email = $item->adm_email;
+            }
+
+            return view('admin.frmadmin', [
+                'id' => $id,
+                'cpf' => $cpf,
+                'name' => $name,
+                'email' => $email
+            ]);
+        }
+        else{
+            return view('admin.frmadmin');
+        }
     }
+
+
+
+    public function searchAdmin(Request $request){
+        $adminUsers = adminModel::where('adm_cpf', $request->search)
+        ->orWhere('adm_name', 'like', '%'.$request->search.'%')
+        ->orWhere('adm_email', 'like', '%'.$request->search.'%')
+        ->orderBy('adm_name', 'asc')->paginate(12);
+
+        $qnt = count($adminUsers);
+        if(count($adminUsers) > 0){
+            return view('admin.griduser', [
+                'adminUser' => $adminUsers,
+                'qnt' => $qnt
+            ]);
+        }
+        else{
+            return back()->with('attention','Registro não encontrado!');
+        }
+    }
+
 
 
 }

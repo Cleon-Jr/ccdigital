@@ -13,6 +13,11 @@
                 title: "Contracheque Digital | SUCESSO",
                 text: "{{Session::get('success')}}",
                 icon: "success",
+                button: {
+                    text: "Ok"
+                }
+            }).then((value) =>{
+                window.location.href="{{'/admin/userlist'}}";
             });
         </script>
     @endif
@@ -36,21 +41,21 @@
                     @csrf
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <input type="hidden" name="id" value="">
+                            <input type="hidden" name="id" value="{{@$id}}">
                             <label>CPF</label>
-                            <input type="text" name="cpf" id="cpf" class="form-control" oninput="formatCPF(this)" value="" placeholder="Somente números">
+                            <input type="text" name="cpf" id="cpf" class="form-control" oninput="formatCPF(this)" value="{{@$cpf}}" placeholder="Somente números">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-8">
                             <label>Nome Completo</label>
-                            <input type="text" name="fullname" class="form-control" value="">
+                            <input type="text" name="fullname" class="form-control" value="{{@$name}}">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-5">
                             <label>E-mail</label>
-                            <input type="email" name="email" id="email" class="form-control" value="">
+                            <input type="email" name="email" id="email" class="form-control" value="{{@$email}}">
                         </div>
                     </div>
                     <div class="form-row">
@@ -103,7 +108,7 @@
                 }
                 if (value.length >= 9) {
                     formattedValue += '-' + value.substring(9, 11);
-                }                
+                }
                 input.value = formattedValue;
             }
 
@@ -121,17 +126,17 @@
             function validatePass(){
                 var vl1 = document.getElementById('pass').value;
                 var vl2 = document.getElementById('passconfirm').value;
-                
+
                     if(vl1 != vl2){
                         swal({
                             title: "Contracheque Digital | ATENÇÃO",
                             text: "Confirmação de senha inválida!",
                             icon: "warning"
-                        });                     
+                        });
                         document.getElementById('passconfirm').value = "";
-                        document.getElementById('pass').value = "";                        
-                    }                    
-            }            
+                        document.getElementById('pass').value = "";
+                    }
+            }
     </script>
 
 @endsection
