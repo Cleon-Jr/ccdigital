@@ -10,7 +10,7 @@ body{
 }
 
 .container{
-    padding: 5px;
+    padding: 5px;    
 }
 
 .card{
@@ -30,6 +30,10 @@ body{
 
 .card .card-body #email{
     text-transform: none;
+}
+
+.card .card-body .form-control::placeholder{
+    font-size: 12px;
 }
 
 .card .card-body .btn{

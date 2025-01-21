@@ -149,11 +149,11 @@
                         <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label>Telefone 1</label>
-                                <input type="text" name="tel1" oninput="formatPhoneNumber(this)" class="form-control" value="{{$tel1}}">
+                                <input type="text" name="tel1" id="tel1" class="form-control" value="{{$tel1}}" oninput="formatPhoneNumber(this)">
                             </div>
                             <div class="form-group col-md-3">
                                 <label>Telefone 2</label>
-                                <input type="text" name="tel2" oninput="formatPhoneNumber(this)" class="form-control" value="{{$tel2}}">
+                                <input type="text" name="tel2" id="tel2" class="form-control" value="{{$tel2}}" oninput="formatPhoneNumber(this)">
                             </div>
                             <div class="form-group col-md-6">
                                 <label>E-mail</label>
@@ -258,12 +258,16 @@
 
         function applyMask(){
             const cnpj = document.getElementById('cnpj');
-            formatCNPJ(cnpj);
+            const telephone1 = document.getElementById('tel1').value;
+            const telephone2 = document.getElementById('tel2').value;
+            
+            formatCNPJ(cnpj);            
+            formatPhoneNumber(tel1);
+            formatPhoneNumber(tel2);
         }
 
         window.onload = applyMask;
     </script>
-
 
 
 @endsection

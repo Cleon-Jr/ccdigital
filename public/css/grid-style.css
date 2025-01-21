@@ -65,7 +65,7 @@ body{
 }
 
 
-
+/* Pagination */
 .pagination{
     position: absolute;
     display: flexbox;

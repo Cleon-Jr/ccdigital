@@ -44,7 +44,7 @@
             @endforeach
         </tbody>
         <tr id="tfooter">
-            <td colspan="8">Footer</td>
+            <td colspan="8">Quantidade de registros: {{$qnt}}</td>
         </tr>
     </table>
     {{$adminUser->links('vendor.pagination.default')}}
