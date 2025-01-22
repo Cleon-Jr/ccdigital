@@ -1,0 +1,46 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--body-background-color);
+    color: var(--text-color1);
+}
+
+.container{
+    padding: 10px;
+}
+.card{
+    margin: 10px;
+    padding: 5px;
+    border-top: 3px solid var(--btn-login-color);
+}
+.card .card-body strong{
+    color: var(--btn-login-color);
+}
+.card .card-body .row{
+    height: 45px;
+    margin: 2px;
+}
+.card .card-body .row .col-md-3,
+.card .card-body .row .col-md{
+    padding: 10px;
+}
+.card .card-body .row .col-md{
+    border-left: 1px solid #dddddd;
+}
+.card .card-body .btn{
+    border: none;
+    width: 180px;
+}
+.card .card-body .btn-warning{
+    background-color: var(--btn-login-color);
+    color: #fff;
+}
+.card .card-body .btn-light{
+    margin-left: 5px;
+}
+
+

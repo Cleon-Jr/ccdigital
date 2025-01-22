@@ -31,9 +31,14 @@ Route::middleware(['sessionUser'])->group(function(){
     Route::post('/admin/adduser', [adminUserController::class, 'addUser']);
     // Exibe a grid de usuários admins cadastrados
     Route::get('/admin/userlist', [adminUserController::class, 'viewUserList']);
+    //Rota para executar o search
     Route::get('/admin/search', [adminUserController::class, 'searchAdmin']);
     // Exibe o form de cadastro de administradores
     Route::get('/admin/administrator/{id}', [adminUserController::class, 'viewFormAdmin']);
+    // Exibe a visualização das informações do usuário administrativo selecionado
+    Route::get('/admin/viewadministrator/{id}', [adminUserController::class, 'viewAdmin']);
+
+    Route::get('/admin/deladmin/{id}', [adminUserController::class, 'delAdmin']);
 
     //exibe a tela principal (main)
     Route::get('/admin/main', [mainController::class, 'viewMain']);

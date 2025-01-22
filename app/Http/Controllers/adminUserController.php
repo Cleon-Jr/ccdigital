@@ -138,5 +138,50 @@ class adminUserController extends Controller
     }
 
 
+    public function viewAdmin($id){
+        $adminUser = DB::select('select * from tbadmins where adm_id = ?', [
+            $id
+        ]);
+        if($adminUser){
+            foreach($adminUser as $item){
+                $id = $item->adm_id;
+                $cpf = $item->adm_cpf;
+                $name = $item->adm_name;
+                $email = $item->adm_email;
+                $lastAccess = $item->adm_last_access;
+                $date = $item->adm_date;
+            }
+
+            return view('admin.viewadmin',[
+                'id' => $id,
+                'cpf' => $cpf,
+                'name' => $name,
+                'email' => $email,
+                'lastAccess' => $lastAccess,
+                'date' => $date
+            ]);
+        }
+    }
+
+
+
+    public function delAdmin($id){
+        // dd($id);
+        try {
+            $admin = DB::delete('delete from tbadmins where adm_id = ?', [
+                $id
+            ]);
+
+            return redirect('/admin/userlist')->with('success', 'Usuário excluído com sucesso!');
+
+        } catch (Exception $ex) {
+            Log::error('HOUVE UMA EXCEÇÃO AO TENTAR EXCLUIR O ADMIN! '.$ex->getMessage());
+
+            return back()->with('error', 'Não foi possível excluir este usuário!');
+        }
+
+    }
+
+
 
 }

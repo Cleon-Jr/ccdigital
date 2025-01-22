@@ -48,9 +48,9 @@
                     <td>{{$item->adm_name}}</td>
                     <td>{{$item->adm_email}}</td>
                     <td>{{$item->adm_date}}</td>
-                    <td class="text-center"><a href="/admin/administrator/{{$item->adm_id}}"><i class="bi bi-view-stacked text-success" title="Visualizar registro"></i></a></td>
-                    <td class="text-center"><i class="bi bi-pencil-square text-warning" title="Editar registro"></i></td>
-                    <td class="text-center"><i class="bi bi-trash-fill text-danger" title="Excluir registro"></i></td>
+                    <td class="text-center"><a href="/admin/viewadministrator/{{$item->adm_id}}"><i class="bi bi-view-stacked text-success" title="Visualizar registro"></i></a></td>
+                    <td class="text-center"><a href="/admin/administrator/{{$item->adm_id}}"><i class="bi bi-pencil-square text-warning" title="Editar registro"></i></a></td>
+                    <td class="text-center"><a href="#" onclick="del({{$item->adm_id}})"><i class="bi bi-trash-fill text-danger" title="Excluir registro"></i></a></td>
                 </tr>
             @endforeach
         </tbody>
@@ -62,5 +62,40 @@
     <br>
     <br>
 </div>
+
+@if (Session::has('success'))
+    <script>
+        swal({
+            title: "Contracheque Digital | SUCESSO",
+            text: "{{Session::get('success')}}",
+            icon: "success",
+        });
+    </script>
+@endif
+@if (Session::has('error'))
+    <script>
+        swal({
+            title: "Contracheque Digital | ERRO",
+            text: "{{Session::get('error')}}",
+            icon: "error",
+        });
+    </script>
+@endif
+
+<script type="text/javascript">
+    function del(id){
+        swal({
+            title: "Contracheque Digital | ATENÇÃO",
+            text: "Você tem certeza que deseja excluir o registro de ID " + id + "?",
+            icon: "warning",
+            buttons: ["Não", "Sim"],
+            dangerMode:true,
+        }).then((willDelete) => {
+            if(willDelete){
+                window.location.href="{{'/admin/deladmin/'}}" + id;
+            }
+        });
+    }
+</script>
 
 @endsection
