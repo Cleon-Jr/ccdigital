@@ -91,7 +91,7 @@
                         <div class="form-row">
                             <div class="form-group col-md text-right">
                                 <input type="file" name="logo" id="file" class="inputfile">
-                                <label for="file" title="Selecione uma image do Brasão ou Logomarca da Instituição!">
+                                <label for="file" title="Selecione uma image do Brasão ou Logomarca da instituição! (.jpg, .jpeg ou .png)">
                                     <i class="bi bi-upload"></i>
                                 </label>
                             </div>
@@ -234,6 +234,7 @@
         }
     </script>
 
+
     <script>
         function formatCNPJ(input) {
             let value = input.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
@@ -260,8 +261,8 @@
             const cnpj = document.getElementById('cnpj');
             const telephone1 = document.getElementById('tel1').value;
             const telephone2 = document.getElementById('tel2').value;
-            
-            formatCNPJ(cnpj);            
+
+            formatCNPJ(cnpj);
             formatPhoneNumber(tel1);
             formatPhoneNumber(tel2);
         }

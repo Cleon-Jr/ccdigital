@@ -55,14 +55,13 @@ class institutionController extends Controller
 
         if(!$inst){                                 // Se não houvr registro, insert...
             try {
-                $request->validated();
                 // dd($request);
                 if($request->hasFile('logo')){
                     $filename = time().'.'.$request->logo->extension();
                     $request->logo->move(public_path('images'), $filename);
                 }
                 $inst = DB::insert('insert into tbinstitution values(null,?,?,?,?,?,?,?,?,?,?,?,?,?)', [
-                    strtoupper($request->cnpj),
+                    strtoupper(preg_replace('/[^\w\s]/u','', $request->cnpj)),
                     strtoupper($request->description),
                     strtoupper($request->address),
                     strtoupper($request->number),
@@ -91,14 +90,13 @@ class institutionController extends Controller
         else{
                                                         //Se houver registro, update...
             try {
-                $request->validated();
                 // dd($request);
                 if($request->hasFile('logo')){
                     $filename = time().'.'.$request->logo->extension();
                     $request->logo->move(public_path('img/brand'), $filename);
                 }
                 $inst = DB::update('update tbinstitution set inst_cnpj = ?, inst_description = ?, inst_address = ?, inst_number = ?, inst_district = ?, inst_cep = ?, inst_uf = ?, inst_city = ?, inst_tel1 = ?, inst_tel2 = ?, inst_email = ?, inst_logo =?, inst_date = ? where inst_id = ?', [
-                    strtoupper($request->cnpj),
+                    strtoupper(preg_replace('/[^\w\s]/u','', $request->cnpj)),
                     strtoupper($request->description),
                     strtoupper($request->address),
                     strtoupper($request->number),

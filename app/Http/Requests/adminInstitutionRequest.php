@@ -22,7 +22,7 @@ class adminInstitutionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'cnpj' => 'required|min:14|max:14',
+            'cnpj' => 'required|min:14',
             'description' => 'required',
             'address' => 'required',
             'district' => 'required',
