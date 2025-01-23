@@ -17,7 +17,7 @@ body{
     padding: 5px;
     border-top: 3px solid var(--btn-login-color);
 }
-.card .card-body strong{
+.card .card-body{
     color: var(--btn-login-color);
 }
 .card .card-body .row{

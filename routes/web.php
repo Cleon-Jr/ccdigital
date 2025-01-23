@@ -7,6 +7,7 @@ use App\Http\Controllers\adminUserController;
 use App\Http\Controllers\configController;
 use App\Http\Controllers\institutionController;
 use App\Http\Controllers\mainController;
+use App\Http\Controllers\p_DashboardController;
 use App\Http\Controllers\uploadsController;
 use Illuminate\Support\Facades\Route;
 
@@ -69,3 +70,9 @@ Route::middleware(['sessionUser'])->group(function(){
 Route::get('/', function(){
     return view('public.login');
 });
+
+
+
+Route::get('/contrachequedigital', [p_DashboardController::class, 'viewMain']);
+
+Route::get('/dashboard', [p_DashboardController::class, 'viewDashboard']);

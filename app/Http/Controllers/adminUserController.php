@@ -120,10 +120,11 @@ class adminUserController extends Controller
 
 
     public function searchAdmin(Request $request){
+        // dd($request->search);
         $adminUsers = adminModel::where('adm_cpf', $request->search)
         ->orWhere('adm_name', 'like', '%'.$request->search.'%')
         ->orWhere('adm_email', 'like', '%'.$request->search.'%')
-        ->orderBy('adm_name', 'asc')->paginate(12);
+        ->orderBy('adm_name', 'asc')->paginate(12)->withQueryString();
 
         $qnt = count($adminUsers);
         if(count($adminUsers) > 0){

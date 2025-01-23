@@ -2,7 +2,7 @@
 @extends('layouts.main')
 
 @section('links')
-<link rel="stylesheet" href="{{asset('css/dash-style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/dash-style.css')}}">
 @endsection
 
 @section('content')
