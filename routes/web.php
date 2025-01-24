@@ -73,6 +73,5 @@ Route::get('/', function(){
 
 
 
-Route::get('/contrachequedigital', [p_DashboardController::class, 'viewMain']);
+Route::get('/contrachequedigital', [p_DashboardController::class, 'viewDashboard']);
 
-Route::get('/dashboard', [p_DashboardController::class, 'viewDashboard']);

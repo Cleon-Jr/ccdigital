@@ -99,7 +99,7 @@ footer h6{
 
 
 
-/* Mobile */
+/* Screen Mobile */
 @media (max-width: 500px){
     .navbar .navbar-brand{
         width: 60px;
