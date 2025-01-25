@@ -25,6 +25,7 @@ body{
     margin: 5px;
     padding: 5px;
 }
+/* -------------------ACCORDION USER INFO */
 #accordionUserInfo{
     border-top: 3px solid var(--background-blue);
 }
@@ -52,6 +53,11 @@ body{
     background-color: #f3f3f3;
 }
 
+#titlePayment{
+    margin-top: 5px;
+}
+
+/* ---------------------------SELECT PAYCHECK BUTTON LINE */
 #rowSelect{
     display: flex;
     justify-content: center;
@@ -74,6 +80,7 @@ body{
     font-size: 14px;
 }
 
+/* ------------------------------ MODAL SELECT PAYCHECK COMPETENCE */
 .modal .modal-dialog .modal-content .modal-header{
     background-color: var(--background-blue);
     color: #fff;
@@ -92,7 +99,23 @@ body{
     width: 180px;
 }
 
+/* --------------------------------- ACCORDION PAYCHECK */
+#accordionPayInfo{
+    border-top: 3px solid var(--background-blue);
+}
+#accordionPayInfo h5{
+    margin: 10px;
+}
+#accordionPayInfo #i-left{
+    position: absolute;
+    left: 0px;
+}
+#accordionPayInfo #i-right{
+    position: absolute;
+    right: 0px;
+}
 
+/* --------------------------------------- RESUME NUMBERS CARDS */
 .totals #totalEarnings{
     border-top: 3px solid #ffc107;
 }
@@ -102,7 +125,6 @@ body{
 .totals #netValue{
     border-top: 3px solid #0d6efd;
 }
-
 .totals #totalEarnings,
 .totals #discounts,
 .totals #netValue{
@@ -112,11 +134,13 @@ body{
 .totals #discounts h5,
 .totals #netValue h5{
     margin: 0px;
+    text-align: left;
 }
 .totals #totalEarnings p,
 .totals #discounts p,
 .totals #netValue p{
     margin: 10px;
+    text-align: left;
     font-weight: bold;
     font-size: 22px;
     line-height: 10px;
