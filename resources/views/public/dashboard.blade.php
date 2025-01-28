@@ -15,12 +15,12 @@
         <div class="card">
             <h4 class="text-center">Informações Cadastrais</h4>
             <hr class="mx-auto" width="80%">
-            
+
             <button type="button" class="btn" data-toggle="collapse" data-target="#collapseUserInfo" aria-expanded="false" aria-controls="collapseUserInfo">
                 <div class="row">
                     <div class="col-md-12">
                         <i class="bi bi-caret-down-fill"></i>
-                        <h4>Cleon Oliveira</h4>                        
+                        <h4>Cleon Oliveira</h4>
                     </div>
                 </div>
             </button>
@@ -62,13 +62,13 @@
     </div>
 
     <!-- FOLHA DE PAGAMENTOS -->
-     @if (!Session::has('payCheck'))
-         
+     @if (Session::has('payCheck'))
+
         <div class="accordion" id="accordionPay">
             <div class="card">
                 <button type="button" class="btn" data-toggle="collapse" data-target="#collapsePay" aria-expanded="false" aria-controls="collapsePay">
                     <div class="row">
-                        <div class="col-md-12">                            
+                        <div class="col-md-12">
                             <h4><i class="bi bi-caret-down-fill"></i>Matrícula: 1245</h4>
                             <h4>Competência: 01/2024<i class="bi bi-caret-down-fill"></i></h4>
                         </div>
@@ -79,7 +79,7 @@
                 </button>
 
                 <div class="collapse" id="collapsePay" data-parent="#accordionPay">
-                    <div class="card-body">                        
+                    <div class="card-body">
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="card" id="cardEarnings">
@@ -103,40 +103,75 @@
                         <hr>
 
                         <h5 class="text-center">Detalhes</h5>
+                            <div class="row" id="rowDetail1">
+                                <div class="col-sm-4"><strong>PREFEITURA MUNICIPAL DE SANTO ANTONIO DO IÇA</strong></div>
+                                <div class="col-sm-4"><strong>GABINETE DO PREFEITO</strong></div>
+                                <div class="col-sm-4"><strong>PODER EXECUTIVO</strong></div>
+                            </div>
+                            <div class="row" id="rowDetail2">
+                                <div class="col-sm-4"><strong>Cargo:</strong> AUXILIAR ADMINISTRATIVO</div>
+                                <div class="col-sm-4"><strong>CBO:</strong> 411030</div>
+                                <div class="col-sm-4"><strong>Data de Admissão:</strong> 02/01/2012</div>
+                            </div>
+                            <hr>
+                        <div class="desktopItems">
+                            <h5 class="text-center">Ítens de Contracheque</h5>
+                            <div class="row" id="rowItemsTitle">
+                                <div class="col-sm-2"><strong>Código</strong></div>
+                                <div class="col-sm-3"><strong>Descrição</strong></div>
+                                <div class="col-sm-2"><strong>Referência</strong></div>
+                                <div class="col-sm-3"><strong>Remunerações</strong></div>
+                                <div class="col-sm-2"><strong>Descontos</strong></div>
+                            </div>
+                            <div class="row" id="rowItems">
+                                <div class="col-sm-2"><strong>1</strong></div>
+                                <div class="col-sm-3"><strong>SALARIO BASE</strong></div>
+                                <div class="col-sm-2"><strong>30,00</strong></div>
+                                <div class="col-sm-3"><strong>1.412,00</strong></div>
+                                <div class="col-sm-2"><strong></strong></div>
+                            </div>
+                            <div class="row" id="rowItems">
+                                <div class="col-sm-2"><strong>1014</strong></div>
+                                <div class="col-sm-3"><strong>CONSIGNAÇÃO BRADESCO</strong></div>
+                                <div class="col-sm-2"><strong></strong></div>
+                                <div class="col-sm-3"><strong></strong></div>
+                                <div class="col-sm-2"><strong>491,95</strong></div>
+                            </div>
+                            <div class="row" id="rowItems">
+                                <div class="col-sm-2"><strong>1015</strong></div>
+                                <div class="col-sm-3"><strong>CONSIGNAÇÃO SANTANDER</strong></div>
+                                <div class="col-sm-2"><strong></strong></div>
+                                <div class="col-sm-3"><strong></strong></div>
+                                <div class="col-sm-2"><strong>639,30</strong></div>
+                            </div>
+                        </div>
 
-                        <div class="row" id="rowDetail1">
-                            <div class="col-sm-4"><strong>PREFEITURA MUNICIPAL DE SANTO ANTONIO DO IÇA</strong></div>
-                            <div class="col-sm-4"><strong>GABINETE DO PREFEITO</strong></div>
-                            <div class="col-sm-4"><strong>PODER EXECUTIVO</strong></div>
+                        <div class="mobileItems">
+                            <h5 class="text-center">Ítens de Contracheque</h5>
+
+                            <div class="row">
+                                <div class="col-md-4"><strong>Código:</strong> 123456</div>
+                                <div class="col-md-4"><strong>Descrição:</strong> SALÁRIO BASE</div>
+                                <div class="col-md-4"><strong>Vencimentos:</strong> R$ 2.457,30</div>
+                                <div class="col-md-4"><strong>Descontos:</strong> R$ 336,30</div>
+                            </div>
+                            <HR>
+                            <div class="row">
+                                <div class="col-md-4"><strong>Código:</strong> 1014</div>
+                                <div class="col-md-4"><strong>Descrição:</strong> CONSIGNAÇÃO BRADESCO</div>
+                                <div class="col-md-4"><strong>Vencimentos:</strong> </div>
+                                <div class="col-md-4"><strong>Descontos:</strong> R$ 212,24</div>
+                            </div>
+                            <HR>
+                            <div class="row">
+                                <div class="col-md-4"><strong>Código:</strong> 1015</div>
+                                <div class="col-md-4"><strong>Descrição:</strong> CONSIGNAÇÃO SANTANDER</div>
+                                <div class="col-md-4"><strong>Vencimentos:</strong> </div>
+                                <div class="col-md-4"><strong>Descontos:</strong> R$ 639,16</div>
+                            </div>
+                            <HR>
                         </div>
-                        <div class="row" id="rowDetail2">
-                            <div class="col-sm-4"><strong>Cargo:</strong> AUXILIAR ADMINISTRATIVO</div>
-                            <div class="col-sm-4"><strong>CBO:</strong> 411030</div>
-                            <div class="col-sm-4"><strong>Data de Admissão:</strong> 02/01/2012</div>
-                        </div>
-                        <hr>
-                        <h5 class="text-center">Ítens de Contracheque</h5>
-                        <div class="row" id="rowItems">
-                            <div class="col-sm-1"><strong>Código</strong></div>
-                            <div class="col-sm-3"><strong>Descrição</strong></div>
-                            <div class="col-sm-2"><strong>Referência</strong></div>
-                            <div class="col-sm-3"><strong>Remunerações</strong></div>
-                            <div class="col-sm-3"><strong>Descontos</strong></div>
-                        </div>
-                        <div class="row" id="rowItems">
-                            <div class="col-sm-1"><strong>1</strong></div>
-                            <div class="col-sm-3"><strong>SALARIO BASE</strong></div>
-                            <div class="col-sm-2"><strong>30,00</strong></div>
-                            <div class="col-sm-3"><strong>1.412,00</strong></div>
-                            <div class="col-sm-3"><strong></strong></div>
-                        </div>
-                        <div class="row" id="rowItems">
-                            <div class="col-sm-1"><strong>505</strong></div>
-                            <div class="col-sm-3"><strong>CONSIGNAÇÃO BRADESCO</strong></div>
-                            <div class="col-sm-2"><strong></strong></div>
-                            <div class="col-sm-3"><strong></strong></div>
-                            <div class="col-sm-3"><strong>491,95</strong></div>
-                        </div>
+
                     </div>
                 </div>
 
@@ -145,7 +180,7 @@
 
      @endif
 
-    
+
     {{-- MODAL SELECT --}}
     <div class="modal fade" id="modalSelect" tabindex="-1" aria-labelledby="modalSelect" data-backdrop="static" data-keyboard="false" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
@@ -161,7 +196,7 @@
                                 <label>Nome do Colaborador</label>
                                 <input type="text" name="fullname" class="form-control" value="Cleon Oliveira" readonly>
                             </div>
-                        </div>                        
+                        </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label>Ano</label>
@@ -192,7 +227,7 @@
         </div>
     </div>
 
-    
+
 
 </section>
 

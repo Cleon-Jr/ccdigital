@@ -82,7 +82,7 @@ body{
 }
 
 #collapsePay #cardEarnings{
-    border-radius: 3px;    
+    border-radius: 3px;
     border-top: 3px solid #0d6efd;
     padding: 5px;
     border-bottom: 1px solid #d7d7d7;
@@ -122,12 +122,24 @@ body{
     padding: 2px;
     font-size: 14px;
 }
+#collapsePay #rowItemsTitle{
+    background-color: #d7d7d7;
+    padding: 3px;
+}
 #collapsePay #rowItems{
     background-color: #eee;
     padding: 2px;
     font-size: 14px;
+    padding: 3px;
+    border-bottom: 1px solid #d7d7d7;
 }
 
+.desktopItems{
+    display: block;
+}
+.mobileItems{
+    display: none;
+}
 
 
 
@@ -169,7 +181,7 @@ body{
         font-size: 18px;
         padding: 5px;
     }
-    
+
     #collapseUserInfo .card-body .row{
         height: 45px;
         padding-top: 0px;
@@ -179,12 +191,32 @@ body{
         font-size: 12px;
         font-weight: bold;
     }
-    
+
     #collapsePay .card-body .card{
         margin-top: 5px;
     }
 
-
+    .mobileItems{
+        display: block;
+        padding: 5px;
+    }
+    .mobileItems .row{
+        background-color: #eee;
+        padding: 3px;
+    }
+    .mobileItems hr{
+        margin: 0px;
+    }
+    .mobileItems .row{
+        margin-top: 5px;
+        /* border-bottom: 1px solid #d7d7d7; */
+    }
+    .mobileItems .row .col-md-4{
+        height: 30px;
+    }
+    .desktopItems{
+        display: none;
+    }
 
     .modal .modal-content form .btn{
         border: none;
