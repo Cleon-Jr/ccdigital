@@ -17,17 +17,17 @@
         <h5 class="text-center text-white">Login Usuário</h5>
         <hr class="mx-auto" width="80%">
         <div class="card-body">
-            <form method="post" action="{{'/'}}" autocomplete="off">
+            <form method="get" action="{{'/contrachequedigital'}}" autocomplete="off">
                 @csrf
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <input type="text" name="cpf" class="form-control" value="{{old('login')}}" required>
+                        <input type="text" name="cpf" class="form-control" value="{{old('login')}}" >
                         <label>CPF</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-gorup col-md-12">
-                        <input type="password" name="pass" class="form-control" required>
+                        <input type="password" name="pass" class="form-control" >
                         <label>Senha</label>
                     </div>
                 </div>

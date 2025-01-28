@@ -20,10 +20,13 @@ body{
 .navbar .navbar-brand .img-fluid{
     width: 80px;
 }
+
 .navbar .navbar-toggler{
     color: #fff;
     border: 1px solid #fff;
+    box-shadow: none;
 }
+
 .navbar .navbar-nav .nav-item{
     width: 180px;
     text-align: center;

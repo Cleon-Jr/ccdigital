@@ -15,11 +15,118 @@ body{
     padding: 5px;
 }
 
-.accordion{
-    margin-top: 10px;
+#accordionUserInfo{
+    margin-top: 25px;
+    border-radius: 5px;
+    border-top: 3px solid var(--background-blue);
+}
+#accordionUserInfo .card h4{
+    margin: 0px
+}
+#accordionUserInfo .card hr{
+    margin: 10px;
+}
+#accordionUserInfo .card .btn{
+    border-radius: 0px;
+    background: transparent;
+    border-bottom: 1px solid #d7d7d7;
+    box-shadow: none;
+}
+#accordionUserInfo .card .btn .row .col-md-12{
+    text-align: left;
+    color: #666;
+}
+#accordionUserInfo .card .btn .row .col-md-12 i{
+    position: absolute;
+    right: 10px
+}
+
+/* Collapse */
+#collapseUserInfo .card-body .row{
+    height: 40px;
+    border-bottom: 1px solid #d7d7d7;
+    padding: 7px;
 }
 
 
+
+/* Folha de Pagamento */
+#accordionPay{
+    margin-top: 10px;
+    border-radius: 5px;
+    border-top: 3px solid #41b15b;
+}
+#accordionPay .card{
+    border: none;
+}
+#accordionPay .card .btn{
+    border-radius: 0px;
+    background-color: #41b15b;
+    border-bottom: 1px solid #d7d7d7;
+    color: #fff;
+    text-align: left;
+    box-shadow: none;
+}
+#accordionPay .box{
+    position: absolute;
+    font-size: 16px;
+    top: 25px;
+    right: 10px;
+}
+#accordionPay .card .btn .row .col-md-12{
+    display: flex;
+    justify-content: space-between;
+}
+#accordionPay .card .btn .row .col-md-12 h4{
+    font-size: 14px;
+}
+
+#collapsePay #cardEarnings{
+    border-radius: 3px;    
+    border-top: 3px solid #0d6efd;
+    padding: 5px;
+    border-bottom: 1px solid #d7d7d7;
+    background-color: #eee;
+}
+#collapsePay #cardDiscounts{
+    border-radius: 3px;
+    border-top: 3px solid #dc3545;
+    padding: 5px;
+    border-bottom: 1px solid #d7d7d7;
+    background-color: #eee;
+}
+#collapsePay #cardNetValues{
+    border-radius: 3px;
+    border-top: 3px solid #41b15b;
+    padding: 5px;
+    border-bottom: 1px solid #d7d7d7;
+    background-color: #eee;
+}
+#collapsePay #cardNetValues p,
+#collapsePay #cardDiscounts p,
+#collapsePay #cardEarnings p{
+    font-weight: bold;
+}
+
+#collapsePay .card-body .card p{
+    margin: 3px;
+}
+
+#collapsePay h5{
+    font-size: 18px;
+}
+
+#collapsePay #rowDetail1,
+#collapsePay #rowDetail2{
+    background-color: #eee;
+    padding: 2px;
+    font-size: 14px;
+}
+#collapsePay #rowItems{
+    background-color: #eee;
+    padding: 2px;
+    font-size: 14px;
+}
 
 
 
@@ -50,95 +157,34 @@ body{
     width: 180px;
 }
 
-/* --------------------------------------- RESUME NUMBERS CARDS */
-.totals #totalEarnings{
-    border-top: 3px solid #ffc107;
-}
-.totals #discounts{
-    border-top: 3px solid #dc3545;
-}
-.totals #netValue{
-    border-top: 3px solid #0d6efd;
-}
-.totals #totalEarnings,
-.totals #discounts,
-.totals #netValue{
-    padding: 7px;
-}
-.totals #totalEarnings h5,
-.totals #discounts h5,
-.totals #netValue h5{
-    margin: 0px;
-    text-align: left;
-}
-.totals #totalEarnings p,
-.totals #discounts p,
-.totals #netValue p{
-    margin: 10px;
-    text-align: left;
-    font-weight: bold;
-    font-size: 22px;
-    line-height: 10px;
-}
 
 
 
 /* Screen Mobile */
 @media (max-width: 500px){
-    .accordion .card h4{
+    #accordionUserInfo{
+        margin-top: 15px;
+    }
+    #accordionUserInfo .card h4{
         font-size: 18px;
         padding: 5px;
     }
-    .accordion .card .card-body{
-        padding: 5px;
-    }
-    #headerUserInfo{
-        padding: 5px;
-    }
-    #headerUserInfo .bi{
-        position: absolute;
-        margin: 10px;
-    }
-    .accordion .card .card-header .row .col-md-4{
-        text-align: left;
-        font-size: 10px;
-    }
-    .accordion .card .card-body .row{
+    
+    #collapseUserInfo .card-body .row{
         height: 45px;
+        padding-top: 0px;
         border-bottom: 1px solid #d7d7d7;
-        margin: 0px 0px 2px;
-        padding: 0px;
     }
-    .accordion .card .card-body .row .col-md-4,
-    .accordion .card .card-body .row .col-md{
-        border: none;
-        padding: 0px 3px 0px;
+    #collapseUserInfo .card-body .row .col-md-4{
+        font-size: 12px;
+        font-weight: bold;
     }
-    .accordion .card .card-body .row .col-md-4{
-        text-align: left;
-        font-size: 10px;
+    
+    #collapsePay .card-body .card{
+        margin-top: 5px;
     }
 
-    #titlePayment{
-        position: relative;
-        top: 7px;
-        font-size: 18px;
-    }
 
-    #rowSelect{
-        text-align: center;
-    }
-    #rowSelect h5{
-        display: none;
-    }
-    #rowSelect h5 i{
-        display: none;
-    }
-    #rowSelect .btn{
-        background: none;
-        color: #fff;
-        box-shadow: none;
-    }
 
     .modal .modal-content form .btn{
         border: none;

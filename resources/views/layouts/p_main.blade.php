@@ -30,7 +30,7 @@
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
                     <div class="barItem"></div>
-                    <a href="{{'/dashboard'}}" target="myframe" class="nav-link active" onclick="$('#myCollapse').collapse('hide')">Folha de Pagamento</a>
+                    <a href="#" data-toggle="modal" data-target="#modalSelect" class="nav-link active" onclick="$('#myCollapse').collapse('hide')">Folha de Pagamento</a>
                 </li>
                 <li class="nav-item">
                     <div class="barItem"></div>
