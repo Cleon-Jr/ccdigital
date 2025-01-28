@@ -16,69 +16,20 @@ body{
 }
 
 .accordion{
-    margin-top: 30px;
-}
-.card{
-    border: none;
-}
-.accordion .card h4{
-    margin: 5px;
-    padding: 5px;
-}
-/* -------------------ACCORDION USER INFO */
-#accordionUserInfo{
-    border-top: 3px solid var(--background-blue);
-}
-.accordion .card .card-header a{
-    color: #666;
-    text-decoration: none;
-}
-#headerUserInfo .bi{
-    position: absolute;
-    right: 10px;
+    margin-top: 10px;
 }
 
-.accordion .card .card-header .row .col-md-4,
-.accordion .card .card-body .row .col-md-4{
-    text-align: right;
 
-}
-.accordion .card .card-body .row .col-md-4,
-.accordion .card .card-body .row .col-md{
-    border-bottom: 1px solid #d7d7d7;
-    padding: 7px;
-}
-.accordion .card .card-body .row{
-    height: 40px;
-    background-color: #f3f3f3;
-}
 
-#titlePayment{
-    margin-top: 5px;
-}
 
-/* ---------------------------SELECT PAYCHECK BUTTON LINE */
-#rowSelect{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 10px;
-    background-color: var(--background-blue);
-    color: #fff;
-    border-radius: 5px;
-    padding: 5px;
 
-}
-#rowSelect h5{
-    position: relative;
-    top: 3px;
-    font-size: 18px;
-}
-#rowSelect .btn{
-    border: none;
-    margin-left: 10px;
-    font-size: 14px;
-}
+
+
+
+
+
+
+
 
 /* ------------------------------ MODAL SELECT PAYCHECK COMPETENCE */
 .modal .modal-dialog .modal-content .modal-header{
@@ -97,22 +48,6 @@ body{
     border: none;
     background-color: var(--background-blue);
     width: 180px;
-}
-
-/* --------------------------------- ACCORDION PAYCHECK */
-#accordionPayInfo{
-    border-top: 3px solid var(--background-blue);
-}
-#accordionPayInfo h5{
-    margin: 10px;
-}
-#accordionPayInfo #i-left{
-    position: absolute;
-    left: 0px;
-}
-#accordionPayInfo #i-right{
-    position: absolute;
-    right: 0px;
 }
 
 /* --------------------------------------- RESUME NUMBERS CARDS */

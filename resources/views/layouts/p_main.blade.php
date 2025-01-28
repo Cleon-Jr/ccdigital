@@ -20,7 +20,6 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" role="navigation">
         <div class="navbar-brand">
             <img class="img-fluid" src="{{asset('img/logo-w.png')}}">
-            {{-- <H4 class="userLogged text-white"> | Cleon Oliveira</H4> --}}
         </div>
 
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myCollapse" aria-controls="myCollapse" aria-expanded="false">
@@ -28,26 +27,19 @@
         </button>
 
         <div class="collapse navbar-collapse" id="myCollapse">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
                     <div class="barItem"></div>
-                    <a href="{{'/dashboard'}}" target="myframe" class="nav-link active" onclick="$('#myCollapse').collapse('hide')">Home</a>
-                </li>
-                <li class="nav-item">
-                    <div class="barItem"></div>
-                    <a href="{{'#'}}" target="myframe" class="nav-link" onclick="$('#myCollapse').collapse('hide')">Envio de Folha</a>
+                    <a href="{{'/dashboard'}}" target="myframe" class="nav-link active" onclick="$('#myCollapse').collapse('hide')">Folha de Pagamento</a>
                 </li>
                 <li class="nav-item">
                     <div class="barItem"></div>
-                    <a href="{{'#'}}" target="myframe" class="nav-link" onclick="$('#myCollapse').collapse('hide')">Usuários</a>
+                    <a href="{{'#'}}" target="myframe" class="nav-link" onclick="$('#myCollapse').collapse('hide')">Meu Perfil</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item">
                     <div class="barItem"></div>
-                    <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">Configurações</a>
-                    <div class="dropdown-menu">
-                        <a href="{{'#'}}" target="myframe" class="dropdown-item" onclick="$('#myCollapse').collapse('hide')">Instituição</a>
-                    </div>
-                </li>
+                    <a href="{{'#'}}" target="myframe" class="nav-link" onclick="$('#myCollapse').collapse('hide')">Instituição</a>
+                </li>                
                 <li class="nav-item">
                     <div class="barItem"></div>
                     <a href="{{'#'}}" class="nav-link" onclick="$('#myCollapse').collapse('hide')">Sair</a>

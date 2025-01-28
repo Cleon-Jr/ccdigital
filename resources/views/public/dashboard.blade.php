@@ -14,15 +14,8 @@
     <div class="accordion" id="accordionUserInfo">
         <div class="card">
             <h4 class="text-center">Informações Cadastrais</h4>
-            <div class="card-header" id="headerUserInfo">
-                <i class="bi bi-caret-down-fill"></i>
-                <a href="#" data-toggle="collapse" data-target="#collapseUserInfo" aria-expanded="true" aria-controls="collapseUserInfo">
-                    <div class="row">
-                        <div class="col-md-4"><strong>Nome Completo</strong></div>
-                        <div class="col-md">Cleon Oliveira</div>
-                    </div>
-                </a>
-            </div>
+            
+            
             {{-- Collapse --}}
             <div class="collapse" id="collapseUserInfo" data-parent="#accordionUserInfo" aria-labelledby="headerUserInfo">
                 <div class="card-body">
@@ -59,13 +52,7 @@
         </div>
     </div>
 
-    <h4 id="titlePayment" class="text-center">Folha de Pagamento</h4>
-
-    <div class="row" id="rowSelect">
-        <h5>Selecione uma folha de pagamento <i class="bi bi-caret-right-fill"></i></h5>
-        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalSelect">Clique e Selecione uma Folha de Pagamento</button>
-    </div>
-
+    
     {{-- MODAL SELECT --}}
     <div class="modal fade" id="modalSelect" tabindex="-1" aria-labelledby="modalSelect" data-backdrop="static" data-keyboard="false" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-lg">
@@ -81,15 +68,7 @@
                                 <label>Nome do Colaborador</label>
                                 <input type="text" name="fullname" class="form-control" value="Cleon Oliveira" readonly>
                             </div>
-                        </div>
-                        {{-- <div class="form-row">
-                            <div class="form-group col-md-2">
-                                <label>Matrícula</label>
-                                <select name="cod" class="form-control">
-                                    <option value="">1234</option>
-                                </select>
-                            </div>
-                        </div> --}}
+                        </div>                        
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label>Ano</label>
@@ -121,49 +100,6 @@
     </div>
 
     {{-- Folhas de pagamento --}}
-    <div class="accordion" id="accordionPayInfo">
-        <div class="card">
-            <div class="row">                       
-                <div class="col-md-6">
-                    <h5>Matrícula: 1234</h5>
-                </div>
-                <div class="col-md-6 text-right">
-                    <h5>Competência: 01/2024 - Sequência: 0</h5>
-                </div>
-            </div>
-            <!--                                            Cards de resumo (Button Title) -->
-            <div class="card-header" id="headerPayInfo">
-                <i id="i-left" class="bi bi-caret-down-fill"></i>
-                <i id="i-right" class="bi bi-caret-down-fill"></i>
-
-                <a href="#" data-toggle="collapse" data-target="#collapsePayInfo" aria-expanded="true" aria-controls="collapsePayInfo">
-                    <div class="totals">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="card" id="totalEarnings">
-                                    <h5>Total Poventos</h5>
-                                    <hr>
-                                    <p>R$ 1.412,00</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card" id="discounts">
-                                    <h5>Descontos</h5>
-                                    <hr>
-                                    <p>R$ 363,50</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card" id="netValue">
-                                    <h5>Valor Líquido</h5>
-                                    <hr>
-                                    <p>R$ 1.048,50</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>                
-            </div>
             {{-- Collapse --}}
             <div class="collapse show" id="collapsePayInfo" data-parent="#accordionPayInfo" aria-labelledby="headerPayInfo">
                 <div class="card-body">
@@ -216,32 +152,6 @@
 
         </div>
     </div>
-
-    <!-- <div class="totals">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card" id="totalEarnings">
-                    <h5>Total Poventos</h5>
-                    <hr>
-                    <p>R$ 1.412,00</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card" id="discounts">
-                    <h5>Descontos</h5>
-                    <hr>
-                    <p>R$ 363,50</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card" id="netValue">
-                    <h5>Valor Líquido</h5>
-                    <hr>
-                    <p>R$ 1.048,50</p>
-                </div>
-            </div>
-        </div>
-    </div> -->
 
 
 </section>
