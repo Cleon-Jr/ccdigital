@@ -62,7 +62,7 @@
     </div>
 
     <!-- FOLHA DE PAGAMENTOS -->
-     @if (Session::has('payCheck'))
+     @if (!Session::has('payCheck'))
 
         <div class="accordion" id="accordionPay">
             <div class="card">

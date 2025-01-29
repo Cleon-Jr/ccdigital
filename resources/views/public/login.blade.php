@@ -2,7 +2,7 @@
 @extends('layouts.main')
 
 @section('title')
-    <title>Contracheque Digital | Login</title>    
+    <title>Contracheque Digital | Login</title>
 @endsection
 
 
@@ -37,7 +37,7 @@
                         <button type="submit" class="btn btn-light btn-block">Entrar</button>
                     </div>
                 </div>
-                <h5 class="text-center text-white"><a href="#" data-toggle="modal" data-target="#myModal">Criar Acesso</a></h5>
+                <h5 class="text-center text-white"><a href="#" data-toggle="modal" data-target="#myModal">Primeiro Acesso</a></h5>
                 <p class="text-center passForgot"><a href="#">Esqueci minha senha!</a></p>
             </form>
         </div>
