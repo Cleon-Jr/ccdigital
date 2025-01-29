@@ -34,13 +34,19 @@
                         <div class="form-row">
                             <div class="form-group col-md">
                                 <input type="file" name="jsonfile3" class="custom-file-input" id="jsonFile3">
-                                <label class="custom-file-label" for="jsonfile3">Selecione o arquivo 3-contracheque</label>
+                                <label class="custom-file-label" for="jsonfile3">Selecione o arquivo 3-servidoresfolha</label>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md">
                                 <input type="file" name="jsonfile4" class="custom-file-input" id="jsonFile4">
-                                <label class="custom-file-label" for="jsonfile4">Selecione o arquivo 4-ítens</label>
+                                <label class="custom-file-label" for="jsonfile4">Selecione o arquivo 4-contracheque</label>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md">
+                                <input type="file" name="jsonfile5" class="custom-file-input" id="jsonFile5">
+                                <label class="custom-file-label" for="jsonfile5">Selecione o arquivo 5-itenscontracheque</label>
                             </div>
                         </div>
                         <div class="form-row">

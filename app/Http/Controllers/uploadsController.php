@@ -83,20 +83,24 @@ class uploadsController extends Controller
             'jsonfile2' => 'required|file|mimes:json',
             'jsonfile3' => 'required|file|mimes:json',
             'jsonfile4' => 'required|file|mimes:json',
+            'jsonfile5' => 'required|file|mimes:json',
         ],
         [
             'jsonfile1.required' => 'O arquivo 1-competencia é obrigatório!',
             'jsonfile2.required' => 'O arquivo 2-servidores é obrigatório!',
-            'jsonfile3.required' => 'O arquivo 3-contracheque é obrigatório!',
-            'jsonfile4.required' => 'O arquivo 4-itens_contracheque é obrigatório!',
+            'jsonfile3.required' => 'O arquivo 3-servidoresfolha é obrigatório!',
+            'jsonfile4.required' => 'O arquivo 4-contracheque é obrigatório!',
+            'jsonfile5.required' => 'O arquivo 5-itenscontracheque é obrigatório!',
             'jsonfile1.file' => 'Arquivo 1-competencia inválido!',
             'jsonfile2.file' => 'Arquivo 2-servidores inválido!',
-            'jsonfile3.file' => 'Arquivo 3-contracheque inválido!',
-            'jsonfile4.file' => 'Arquivo 4-itens_contracheque inválido!',
+            'jsonfile3.file' => 'Arquivo 3-servidoresfolha inválido!',
+            'jsonfile4.file' => 'Arquivo 4-contracheque inválido!',
+            'jsonfile5.file' => 'Arquivo 5-itenscontracheque inválido!',
             'jsonfile1.mimes' => 'O arquivo 1-competencia deve ser do tipo .Json!',
             'jsonfile2.mimes' => 'O arquivo 2-servidores deve ser do tipo .Json!',
-            'jsonfile3.mimes' => 'O arquivo 3-contracheque deve ser do tipo .Json!',
-            'jsonfile4.mimes' => 'O arquivo 4-itens_contracheque deve ser do tipo .Json!',
+            'jsonfile3.mimes' => 'O arquivo 3-servidoresfolha deve ser do tipo .Json!',
+            'jsonfile4.mimes' => 'O arquivo 4-contracheque deve ser do tipo .Json!',
+            'jsonfile5.mimes' => 'O arquivo 5-itenscontracheque deve ser do tipo .Json!',
         ]);
 
         // processamento dos arquivos jsonfile1
@@ -156,19 +160,80 @@ class uploadsController extends Controller
 
 
         // Processamento do arquivo Jsonfile2
-        $path = $request->file('jsonfile2')->store('servidores_folha');
+        $path = $request->file('jsonfile2')->store('servidores');
             if(!$path){
-                return back()->with('error', 'Falha ao salvar o arquivo 2-servidoresfolha!');
+                return back()->with('error', 'Falha ao salvar o arquivo 2-servidores!');
             }
 
         $json = Storage::get($path);
             if(!$json){
-                return back()->with('error', 'Faha ao ler o conteúdo do arquivo 2-servidoresfolha!');
+                return back()->with('error', 'Faha ao ler o conteúdo do arquivo 2-servidores!');
             }
 
         $data = json_decode($json, true);
             if(json_last_error() !== JSON_ERROR_NONE){
-                return back()->with('error', 'Falha ao decodificar o arquivo 2-servidoresfolha! '.json_last_error_msg());
+                return back()->with('error', 'Falha ao decodificar o arquivo 2-servidores! '.json_last_error_msg());
+            }
+
+        foreach($data as $item){
+            $payRollEmployee = DB::select('select * from tbemployee where emp_cnpj = ? and emp_cpf = ? and emp_year = ? and emp_month = ?', [
+                $item['CNPJ'],
+                $item['CPF'],
+                $item['Ano'],
+                $item['Mes'],
+            ]);
+
+            if(count($payRollEmployee) <= 0){
+                try {
+                    $payRollEmployee = DB::insert('insert into tbemployee values (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [
+                        $item['CNPJ'],
+                        $item['CPF'],
+                        $item['Nome'],
+                        $item['Nascimento'],
+                        $item['Mae'],
+                        $item['RG'],
+                        $item['PISPASEP'],
+                        $item['Email'],
+                        $item['Cidade'],
+                        $item['Ano'],
+                        $item['Mes'],
+                        null,
+                        0,
+                        null,
+                        date('Y-m-d H:i:s')
+                    ]);
+
+                    // envio realizado
+
+
+                } catch (Exception $ex) {
+                    Log::error('HOUVE UMA EXCEÇÃO AO SALVAR O REGISTRO '.$item['CPF'].' DO ARQUIVO 2-servidores! '.$ex->getMessage(), [
+                        'exception' => $ex
+                    ]);
+
+                    return back()->with('error', 'Não foi possível salvar o registro '.$item['CPF'].' do arquivo 2-servidores!');
+                }
+
+            }
+            else{
+                // registro já existente
+            }
+        }
+
+        // Processamento do arquivo Jsonfile3
+        $path = $request->file('jsonfile3')->store('servidoresfolha');
+            if(!$path){
+                return back()->with('error', 'Falha ao salvar o arquivo 3-servidoresfolha!');
+            }
+
+        $json = Storage::get($path);
+            if(!$json){
+                return back()->with('error', 'Faha ao ler o conteúdo do arquivo 3-servidoresfolha!');
+            }
+
+        $data = json_decode($json, true);
+            if(json_last_error() !== JSON_ERROR_NONE){
+                return back()->with('error', 'Falha ao decodificar o arquivo 3-servidoresfolha! '.json_last_error_msg());
             }
 
         foreach($data as $item){
@@ -208,11 +273,11 @@ class uploadsController extends Controller
 
 
                 } catch (Exception $ex) {
-                    Log::error('HOUVE UMA EXCEÇÃO AO SALVAR O REGISTRO '.$item['CPF'].' DO ARQUIVO 2-servidoresfolha! '.$ex->getMessage(), [
+                    Log::error('HOUVE UMA EXCEÇÃO AO SALVAR O REGISTRO '.$item['CPF'].' DO ARQUIVO 3-servidoresfolha! '.$ex->getMessage(), [
                         'exception' => $ex
                     ]);
 
-                    return back()->with('error', 'Não foi possível salvar o registro '.$item['CPF'].' do arquivo 2-servidoresfolha!');
+                    return back()->with('error', 'Não foi possível salvar o registro '.$item['CPF'].' do arquivo 3-servidoresfolha!');
                 }
 
             }
@@ -222,20 +287,20 @@ class uploadsController extends Controller
         }
 
 
-        // Processamento do arquivo Jsonfile3
-        $path = $request->file('jsonfile3')->store('contracheque');
+        // Processamento do arquivo Jsonfile4
+        $path = $request->file('jsonfile4')->store('contracheque');
             if(!$path){
-                return back()->with('error', 'Falha ao salvar o arquivo 3-contracheque!');
+                return back()->with('error', 'Falha ao salvar o arquivo 4-contracheque!');
             }
 
         $json = Storage::get($path);
             if(!$json){
-                return back()->with('error', 'Falha ao ler o conteúdo do arquivo 3-contracheque!');
+                return back()->with('error', 'Falha ao ler o conteúdo do arquivo 4-contracheque!');
             }
 
         $data = json_decode($json, true);
             if(json_last_error() !== JSON_ERROR_NONE){
-                return back()->with('error', 'Falha ao decodificar o arquivo 3-contracheque! '.json_last_error_msg());
+                return back()->with('error', 'Falha ao decodificar o arquivo 4-contracheque! '.json_last_error_msg());
             }
 
         foreach ($data as $item) {
@@ -277,11 +342,11 @@ class uploadsController extends Controller
 
 
                 } catch (Exception $ex) {
-                    Log::error('HOUVE UMA EXCEÇÃO AO SALVAR O REGISTRO '.$item['Matricula'].' DO ARQUIVO 3-contracheque! '.$ex->getMessage(), [
+                    Log::error('HOUVE UMA EXCEÇÃO AO SALVAR O REGISTRO '.$item['Matricula'].' DO ARQUIVO 4-contracheque! '.$ex->getMessage(), [
                         'exception' => $ex
                     ]);
 
-                    return back()->with('error', 'Não foi possível salvar o registro '.$item['Matricula'].' do arquivo 3-contracheque!');
+                    return back()->with('error', 'Não foi possível salvar o registro '.$item['Matricula'].' do arquivo 4-contracheque!');
                 }
             }
             else{
@@ -291,20 +356,20 @@ class uploadsController extends Controller
 
 
 
-        // Processamento do arquivo Jsonfile4
-        $path = $request->file('jsonfile4')->store('itens_contracheque');
+        // Processamento do arquivo Jsonfile5
+        $path = $request->file('jsonfile5')->store('itenscontracheque');
             if(!$path){
-                return back()->with('error', 'Falha ao salvar o arquivo 4-itens_contracheque!');
+                return back()->with('error', 'Falha ao salvar o arquivo 5-itenscontracheque!');
             }
 
         $json = Storage::get($path);
             if(!$json){
-                return back()->with('error', 'Falha ao ler o conteúdo do arquivo 4-itens_contracheque!');
+                return back()->with('error', 'Falha ao ler o conteúdo do arquivo 5-itenscontracheque!');
             }
 
         $data = json_decode($json, true);
             if(json_last_error() !== JSON_ERROR_NONE){
-                return back()->with('error', 'Falha ao decodificar o arquivo 4-itens_contracheque! '.json_last_error_msg());
+                return back()->with('error', 'Falha ao decodificar o arquivo 5-itenscontracheque! '.json_last_error_msg());
             }
 
         foreach($data as $item){
@@ -334,11 +399,11 @@ class uploadsController extends Controller
                     //Envio realizado
 
                 } catch (Exception $ex) {
-                    Log::error('HOUVE UMA EXCEÇÃO AO SALVAR O REGISTRO '.$item['Matricula'].' do arquivo 4-itens_contracheque! '.$ex->getMessage(), [
+                    Log::error('HOUVE UMA EXCEÇÃO AO SALVAR O REGISTRO '.$item['Matricula'].' do arquivo 5-itenscontracheque! '.$ex->getMessage(), [
                         'exception' => $ex
                     ]);
 
-                    return back()->with('error', 'Não foi possível salvar o registro '.$item['Matricula'].' do arquivo 4-itens_contracheque!');
+                    return back()->with('error', 'Não foi possível salvar o registro '.$item['Matricula'].' do arquivo 5-itenscontracheque!');
                 }
             }
             else{

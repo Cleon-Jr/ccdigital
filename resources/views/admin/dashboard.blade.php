@@ -9,6 +9,16 @@
 
     <h4 id="pageTitle">Painel de Controle</h4>
 
+    @if (Session::get('cnpjSession') == 0)
+        <script>
+            swal({
+                title: "Contracheque Digital | ATENÇÃO",
+                text: "Por favor, registre um gestor para o sistema em Configurações->Instituição!",
+                icon: "warning",
+            })
+        </script>
+    @endif
+
     <section class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -49,12 +59,12 @@
                     <h5 class="text-center">Últimos Envios</h5>
                     <hr class="mx-auto" width="80%">
                     <div class="card-body">
-                        <p><strong>Último Envio:</strong> {{$lastDate}}</p>
+                        <p><strong>Último Envio:</strong> {{@$lastDate}}</p>
                         <p><strong>Quantidade Servidores/Matrículas:</strong> {{@$register}}</p>
                         <p><strong>Competência:</strong> {{@$competence}}
                         <p><strong>Valor da Folha:</strong> R$ {{@$earning}}</p>
                         <hr class="mx-auto" width="80%">
-                        <a href="#" class="btn btn-success btn-block text-white">Enviar Folha</a>
+                        <a href="{{'/admin/uploads'}}" class="btn btn-success btn-block text-white">Enviar Folha</a>
                     </div>
                 </div>
             </div>

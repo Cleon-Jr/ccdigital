@@ -7,12 +7,16 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+
 
 class institutionController extends Controller
 {
     public function viewInstitution(){
-        $institution = DB::select('select * from tbinstitution limit 1');
+        if(Session::get('cnpjSession') !== 0){
+
+            $institution = DB::select('select * from tbinstitution limit 1');
             if($institution){
                 $item = $institution[0];
 
@@ -31,21 +35,27 @@ class institutionController extends Controller
                 $logo = $item->inst_logo;
             }
 
-        return view('admin.institution', [
-            'id' => $id,
-            'cnpj' => $cnpj,
-            'desc' => $desc,
-            'address' => $address,
-            'number' => $number,
-            'district' => $district,
-            'cep' => $cep,
-            'uf' => $uf,
-            'city' => $city,
-            'tel1' => $tel1,
-            'tel2' => $tel2,
-            'email' => $email,
-            'logo' => $logo
-        ]);
+            return view('admin.institution', [
+                'id' => $id,
+                'cnpj' => $cnpj,
+                'desc' => $desc,
+                'address' => $address,
+                'number' => $number,
+                'district' => $district,
+                'cep' => $cep,
+                'uf' => $uf,
+                'city' => $city,
+                'tel1' => $tel1,
+                'tel2' => $tel2,
+                'email' => $email,
+                'logo' => $logo
+            ]);
+
+        }
+        else{
+            return view('admin.institution');
+        }
+
     }
 
 
@@ -76,7 +86,7 @@ class institutionController extends Controller
                     date('Y-m-d')
                 ]);
 
-                return back()->with('success', 'Registro da instituição realizado com sucesso!')->withInput();
+                return back()->with('success', 'Instituição registrada com sucesso! Por favor, efetue o login novamente!');
 
             } catch (Exception $ex) {
                 Log::error('OCORREU UMA EXCEÇÃO NA FUNÇÃO DE CADASTRAR A INSTITUIÇÃO! '.$ex->getMessage(),[
@@ -112,7 +122,7 @@ class institutionController extends Controller
                     $request->id
                 ]);
 
-                return back()->with('success', 'Alterações salvas com sucesso!')->withInput();
+                return back()->with('success_edit', 'Alterações salvas com sucesso!')->withInput();
 
             } catch (Exception $ex) {
                 Log::error('OCORREU UMA EXCEÇÃO NA FUNÇÃO DE EDITAR A INSTITUIÇÃO! '.$ex->getMessage(),[
@@ -173,7 +183,7 @@ class institutionController extends Controller
                             date('Y-m-d')
                         ]);
 
-                        return back()->with('success_json', 'Instituição registrada com sucesso!');
+                        return back()->with('success_json', 'Instituição registrada com sucesso! Por favor, efetue o login novamente!');
 
                     } catch (Exception $ex) {
                         Log::error('OCORREU UMA EXCEÇÃO AO REGISTRAR O GESTOR VIA ARQUIVO JSON! '.$ex->getMessage(), [
@@ -190,9 +200,4 @@ class institutionController extends Controller
         }
     }
 
-
-
-    public function addBrand(Request $request){     // Adiciona a logomarca
-        dd($request);
-    }
 }

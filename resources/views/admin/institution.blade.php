@@ -6,13 +6,28 @@
 
 @section('content')
 
+    @if (Session::has('success_edit'))
+        <script>
+            swal({
+                title: "Contracheque Digital | SUCESSO",
+                text: "{{Session::get('success_json')}}",
+                icon: "success",
+            });
+        </script>
+    @endif
+
     @if (Session::has('success_json'))
         <script>
             swal({
                 title: "Contracheque Digital | SUCESSO",
                 text: "{{Session::get('success_json')}}",
                 icon: "success",
-            })
+                button: {
+                    text: "Ok"
+                }
+            }).then((value)=>{
+                parent.location.href="{{'/admin/logout'}}";
+            });
         </script>
     @endif
 
@@ -72,7 +87,12 @@
                             title: "Contracheque Digital | SUCESSO",
                             text: "{{Session::get('success')}}",
                             icon: "success",
-                        });
+                            button: {
+                                text: "Ok"
+                            }
+                        }).then((value)=>{
+                            parent.location.href="{{'/admin/logout'}}";
+                        })
                      </script>
                  @endif
 
@@ -96,68 +116,68 @@
                                 </label>
                             </div>
                             <div class="form-group col-md">
-                                <img class="img-thumbnail" id="imgThumbnail" src=" {{asset('img/brand/'.$logo)}} ">
+                                <img class="img-thumbnail" id="imgThumbnail" src=" {{asset('img/brand/'.@$logo)}} ">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <input type="hidden" name="id" value="{{$id}}">
+                                <input type="hidden" name="id" value="{{@$id}}">
                                 <label>CNPJ</label>
-                                <input type="text" name="cnpj" id="cnpj" class="form-control" value="{{$cnpj}}" oninput="formatCNPJ(this)" maxlength="18" required>
+                                <input type="text" name="cnpj" id="cnpj" class="form-control" value="{{@$cnpj}}" oninput="formatCNPJ(this)" maxlength="18" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-10">
                                 <label>Nome Instituição</label>
-                                <input type="text" name="description" class="form-control" value="{{$desc}}" required>
+                                <input type="text" name="description" class="form-control" value="{{@$desc}}" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-2">
                                 <label>CEP</label>
-                                <input type="text" name="cep" class="form-control" value="{{$cep}}">
+                                <input type="text" name="cep" class="form-control" value="{{@$cep}}">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Endereço</label>
-                                <input type="text" name="address" class="form-control" value="{{$address}}" required>
+                                <input type="text" name="address" class="form-control" value="{{@$address}}" required>
                             </div>
                             <div class="form-group col-md-1">
                                 <label>Número</label>
-                                <input type="text" name="number" class="form-control" value="{{$number}}">
+                                <input type="text" name="number" class="form-control" value="{{@$number}}">
                             </div>
                             <div class="form-group col-md">
                                 <label>Bairro</label>
-                                <input type="text" name="district" class="form-control" value="{{$district}}" required>
+                                <input type="text" name="district" class="form-control" value="{{@$district}}" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-1">
                                 <label>UF</label>
                                 <select name="uf" class="form-control">
-                                    <option value="{{$uf}}">{{$uf}}</option>
+                                    <option value="{{@$uf}}">{{@$uf}}</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-5">
                                 <label>Cidade</label>
                                 <select name="city" class="form-control">
-                                    <option value="{{$city}}">{{$city}}</option>
+                                    <option value="{{@$city}}">{{@$city}}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label>Telefone 1</label>
-                                <input type="text" name="tel1" id="tel1" class="form-control" value="{{$tel1}}" oninput="formatPhoneNumber(this)">
+                                <input type="text" name="tel1" id="tel1" class="form-control" value="{{@$tel1}}" oninput="formatPhoneNumber(this)">
                             </div>
                             <div class="form-group col-md-3">
                                 <label>Telefone 2</label>
-                                <input type="text" name="tel2" id="tel2" class="form-control" value="{{$tel2}}" oninput="formatPhoneNumber(this)">
+                                <input type="text" name="tel2" id="tel2" class="form-control" value="{{@$tel2}}" oninput="formatPhoneNumber(this)">
                             </div>
                             <div class="form-group col-md-6">
                                 <label>E-mail</label>
-                                <input type="email" name="email" id="email" class="form-control" value="{{Str::lower($email)}}">
+                                <input type="email" name="email" id="email" class="form-control" value="{{Str::lower(@$email)}}">
                             </div>
                         </div>
                         <hr>

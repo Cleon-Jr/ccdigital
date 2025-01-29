@@ -9,22 +9,8 @@ use Illuminate\Support\Facades\Session;
 class adminDashController extends Controller
 {
     public function viewDash(){
-        //Informações da instituição
-        if(Session::has('cnpjSession') !== 0){
-            $institution = DB::select('select * from tbinstitution limit 1');
-            if($institution){
-                $item = $institution[0];
-                $cnpj = $item->inst_cnpj;
-                $desc = $item->inst_description;
-                $tel = $item->inst_tel1.' '.$item->inst_tel2;
-                $email = $item->inst_email;
-                $address = $item->inst_address.', '.$item->inst_number.' - '.$item->inst_district;
-                $location = $item->inst_city.'-'.$item->inst_uf;
-            }
-        }
 
         //Informações de envio
-
         $sendDate = DB::select('select * from tbcompetence order by com_id desc limit 1');
             if(count($sendDate) > 0){
                 $fields = $sendDate;
@@ -65,18 +51,51 @@ class adminDashController extends Controller
                 $register = '0/0';
             }
 
-            return view('admin.dashboard', [
-                'cnpj' => $cnpj,
-                'desc' => $desc,
-                'tel' => $tel,
-                'email' => strtolower($email),
-                'address' => $address,
-                'location' => $location,
-                'earning' => $earning,
-                'competence' => $competence,
-                'register' => $register,
-                'lastDate' => $dateSend
-            ]);
+        //Informações da instituição
+        if(Session::has('cnpjSession')){
+
+            $institution = DB::select('select * from tbinstitution limit 1');
+
+            if($institution){
+                $item = $institution[0];
+                $cnpj = $item->inst_cnpj;
+                $desc = $item->inst_description;
+                $tel = $item->inst_tel1.' '.$item->inst_tel2;
+                $email = $item->inst_email;
+                $address = $item->inst_address.', '.$item->inst_number.' - '.$item->inst_district;
+                $location = $item->inst_city.'-'.$item->inst_uf;
+            }
+            else{
+                $cnpj = '';
+                $desc = '';
+                $tel = '';
+                $email = '';
+                $address = '';
+                $location = '';
+            }
+        }
+        else{
+
+            return view('admin.dashboard');
+
+        }
+
+        return view('admin.dashboard', [
+            'cnpj' => $cnpj,
+            'desc' => $desc,
+            'tel' => $tel,
+            'email' => strtolower($email),
+            'address' => $address,
+            'location' => $location,
+            'earning' => $earning,
+            'competence' => $competence,
+            'register' => $register,
+            'lastDate' => $dateSend
+        ]);
+
+
+
+
 
     }
 }
