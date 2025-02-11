@@ -1,7 +1,7 @@
 @extends('layouts.p_basiclayout')
 
 @section('title')
-    <title>CC Digital | Primeiro Acesso</title>
+    <title>CC Digital | Criação de Acesso</title>
 @endsection
 
 @section('links')
@@ -15,40 +15,44 @@
         <div class="navbar-brand">
             <img class="img-fluid" src="{{asset('img/logo-w.png')}}">
         </div>
+
         <h3 class="mx-auto">Seja bem-vindo ao Contracheque Digital!</h3>
     </nav>
 
     <div class="container">
-        <h5 class="text-center">Vamos confirmar sua identidade para continuarmos com a criação de seu acesso.</h5>
+        <h5 class="text-center">Criação da Senha de Acesso!</h5>
         <hr>
 
         <div class="card col-md-8 mx-auto">
-            <h4>Informe os Dados</h4>
+            <h4>Confira se as informações estão corretas e crie uma senha de acesso.</h4>
             <hr>
 
+            <div class="row">
+                <div class="col-md-4 text-right"><strong>CPF</strong></div>
+                <div class="col-md-6">{{$cpf = session('cpf')}} </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 text-right"><strong>Nome</strong></div>
+                <div class="col-md-6"> {{$userName = session('username')}} </div>
+            </div>
+
+            {{-- Card body FORM --}}
             <div class="card-body">
-                <form method="post" action="{{'/confirmation'}}">
-                    @csrf
+                <form>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label>CPF</label>
-                            <input type="text" maxlength="11" name="cpf" class="form-control">
+                            <label>Senha</label>
+                            <input type="password" name="pass" class="form-control">
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Data de Nascimento</label>
-                            <input type="date" name="birth" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md">
-                            <label>E-mail</label>
-                            <input type="email" name="email" class="form-control">
+                            <label>Confirmar Senha</label>
+                            <input type="password" name="pass-confirm" class="form-control">
                         </div>
                     </div>
                     <hr>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <button type="submit" class="btn btn-success btn-block">Confirmar</button>
+                            <button type="submit" class="btn btn-success btn-block">Salvar</button>
                         </div>
                         <div class="form-group col-md-6">
                             <button type="reset" class="btn btn-light btn-block">Cancelar</button>
@@ -58,4 +62,5 @@
             </div>
         </div>
     </div>
+
 @endsection

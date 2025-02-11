@@ -10,6 +10,7 @@ use App\Http\Controllers\mainController;
 use App\Http\Controllers\p_CreateAccessController;
 use App\Http\Controllers\p_DashboardController;
 use App\Http\Controllers\p_LoginController;
+use App\Http\Controllers\p_UsersControlller;
 use App\Http\Controllers\uploadsController;
 use Illuminate\Support\Facades\Route;
 
@@ -79,4 +80,8 @@ Route::get('/createaccess', [p_CreateAccessController::class, 'viewFormAccess'])
 Route::post('/contrachequedigital', [p_LoginController::class, 'loginUser']);
 
 Route::get('/contrachequedigital', [p_DashboardController::class, 'viewDashboard']);
+
+Route::post('/confirmation', [p_UsersControlller::class, 'confirmData']);
+
+Route::get('/createpass', [p_UsersControlller::class, 'viewCreatePass']);
 
