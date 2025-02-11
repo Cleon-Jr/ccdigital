@@ -14,20 +14,20 @@
 @section('content')
     <section class="card col-md-3">
         <img class="d-block mx-auto" src="{{asset('img/logo.png')}}">
-        <h5 class="text-center text-white">Login Usuário</h5>
+        <h5 class="text-center">Login Usuário</h5>
         <hr class="mx-auto" width="80%">
         <div class="card-body">
-            <form method="get" action="{{'/contrachequedigital'}}" autocomplete="off">
+            <form method="post" action="{{'/contrachequedigital'}}" autocomplete="off">
                 @csrf
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <input type="text" name="cpf" class="form-control" value="{{old('login')}}" >
+                        <input type="text" name="cpf" class="form-control" value="{{old('login')}}" required>
                         <label>CPF</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-gorup col-md-12">
-                        <input type="password" name="pass" class="form-control" >
+                        <input type="password" name="pass" class="form-control" required>
                         <label>Senha</label>
                     </div>
                 </div>
