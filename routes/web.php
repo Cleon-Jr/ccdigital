@@ -85,3 +85,5 @@ Route::post('/confirmation', [p_UsersControlller::class, 'confirmData']);
 
 Route::get('/createpass', [p_UsersControlller::class, 'viewCreatePass']);
 
+Route::post('/createpass', [p_UsersControlller::class, 'createAccess']);
+

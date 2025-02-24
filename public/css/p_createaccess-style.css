@@ -23,20 +23,24 @@ body{
     margin: 20px;
 }
 
-.card{
+.container .card{
     background-color: #fff;
     border-radius: 5px;
     border: none;
     border-top: 3px solid var(--background-blue);
 }
 
-.card .row .col-md-4{
+.container .card .card{
+    border: none;
+}
+
+.container .card .row .col-md-4{
     height: 45px;
     padding: 3px;
     background-color: #d7d7d7;
 }
 
-.card .card-body form input{
+.container .card .card-body form input{
     border-radius: 0px;
     border: none;
     border-bottom: 1px solid #d7d7d7;

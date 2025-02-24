@@ -23,9 +23,18 @@
         <hr>
 
         <div class="card col-md-8 mx-auto">
-            <h4>Informe os Dados</h4>
+            <h4 class="text-center">Informe os Dados</h4>
             <hr>
 
+            @if(Session::has('error'))
+                <script>
+                    swal({
+                        title: "Contracheque Digital | ATENÇÃO",
+                        text: "{{ session::get('error') }}",
+                        icon: "error"
+                    });
+                </script>
+            @endif
             <div class="card-body">
                 <form method="post" action="{{'/confirmation'}}">
                     @csrf
@@ -39,19 +48,19 @@
                             <input type="date" name="birth" class="form-control">
                         </div>
                     </div>
-                    <div class="form-row">
+                    <!-- <div class="form-row">
                         <div class="form-group col-md">
                             <label>E-mail</label>
                             <input type="email" name="email" class="form-control">
                         </div>
-                    </div>
+                    </div> -->
                     <hr>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <button type="submit" class="btn btn-success btn-block">Confirmar</button>
                         </div>
                         <div class="form-group col-md-6">
-                            <button type="reset" class="btn btn-light btn-block">Cancelar</button>
+                            <a href="{{ '/' }}" class="btn btn-light btn-block">Cancelar e Voltar</a>
                         </div>
                     </div>
                 </form>
